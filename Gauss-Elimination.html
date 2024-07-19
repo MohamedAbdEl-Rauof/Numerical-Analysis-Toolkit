@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Gauss Elimination</title>
+    <link rel="stylesheet" href="/Gauss-Elimination.css">
+  </head>
+  <body>
+    <h1><strong>Gauss Elimination</strong></h1>
+    <div id="input-matrix">
+      <h2>Input Matrix</h2>
+      <table>
+        <tr>
+          <td><input type="number" id="00"></td>
+          <td><input type="number" id="01"></td>
+          <td><input type="number" id="02"></td>
+          <td><input type="number" id="03"></td>
+        </tr>
+        <tr>
+          <td><input type="number" id="10"></td>
+          <td><input type="number" id="11"></td>
+          <td><input type="number" id="12"></td>
+          <td><input type="number" id="13"></td>
+        </tr>
+        <tr>
+          <td><input type="number" id="20"></td>
+          <td><input type="number" id="21"></td>
+          <td><input type="number" id="22"></td>
+          <td><input type="number" id="23"></td>
+        </tr>
+      </table>
+    </div>
+    <div id="gauss-button">
+      <button onclick="gaussElimination()">Solve Gauss Elimination</button>
+    </div>
+      
+    <div id="output-matrix">
+      <h2>Output Matrix</h2>
+      <table>
+        <tr>
+          <td><span id="r00"></span></td>
+          <td><span id="r01"></span></td>
+          <td><span id="r02"></span></td>
+          <td><span id="r03"></span></td>
+        </tr>
+        <tr>
+          <td><span id="r10"></span></td>
+          <td><span id="r11"></span></td>
+          <td><span id="r12"></span></td>
+          <td><span id="r13"></span></td>
+        </tr>
+        <tr>
+          <td><span id="r20"></span></td>
+          <td><span id="r21"></span></td>
+          <td><span id="r22"></span></td>
+          <td><span id="r23"></span></td>
+        </tr>
+       
+      </table>
+    </div>
+      
+    <div id="solution">
+      <h2>Solution</h2>
+      <table>
+        <tr>
+          <td>x1 = </td>
+          <td><span id="x1"></span></td>
+        </tr>
+        <tr>
+          <td>x2 = </td>
+          <td><span id="x2"></span></td>
+        </tr>
+        <tr>
+          <td>x3 = </td>
+          <td><span id="x3"></span></td>
+        </tr>
+      </table>
+    </div>
+    <script src="/Gauss-Elimination.js"></script>
+  </body>
+</html>

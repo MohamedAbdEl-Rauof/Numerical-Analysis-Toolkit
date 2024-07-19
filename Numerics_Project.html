@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Numerical Analysis</title>
+    <link rel="stylesheet" href="/Numerics_Project.css">
+  </head>
+  <body>
+	<div class="form-container">
+		<form id="method-form">
+		  <select id="method-select" name="method-select">
+			<option value="" selected disabled>Select Method</option>
+			<option value="Bisection">Bisection</option>
+			<option value="False-Position">False Position</option>
+			<option value="Simple-Fixed-Point">Simple Fixed Point</option>
+			<option value="Newton">Newton</option>
+			<option value="Secant">Secant</option>
+		  </select>
+		  <select id="matrix-method-select" name="matrix-method-select">
+			<option value="" selected disabled>Select Matrix </option>
+			<option value="Gauss-Elimination">Gauss Elimination</option>
+			<option value="LU-Decomposition">LU Decomposition</option>
+			<option value="Cramer's-Rule">Cramer's Rule</option>
+		  </select>
+		  <button type="submit" onclick="submitForm(event)">ENTER</button>
+		</form>
+	  </div>
+	  <script src="/Numerics_Project.js"></script>
+  </body>
+</html>

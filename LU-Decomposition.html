@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LU Decomposition</title>
+    <link rel="stylesheet" href="/LU-Decomposition.css">
+  </head>
+  <body>
+    <h1>LU Decomposition</h1>
+    <p> <strong>Enter the values of the 3x3 matrix A:</strong></p>
+    <table>
+      <tr>
+        <td><input type="text" id="a11" /></td>
+        <td><input type="text" id="a12" /></td>
+        <td><input type="text" id="a13" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="a21" /></td>
+        <td><input type="text" id="a22" /></td>
+        <td><input type="text" id="a23" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="a31" /></td>
+        <td><input type="text" id="a32" /></td>
+        <td><input type="text" id="a33" /></td>
+      </tr>
+    </table>
+    <p> <strong>Enter the values of the vector B:</strong></p>
+    <table>
+      <tr>
+        <td><input type="text" id="b1" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="b2" /></td>
+      </tr>
+      <tr>
+        <td><input type="text" id="b3" /></td>
+      </tr>
+    </table>
+    <button onclick="decompose()">Decompose</button>
+    <p>L:</p>
+    <pre id="l"></pre>
+    <p>U:</p>
+    <pre id="u"></pre>
+    <p>x:</p>
+    <pre id="x"></pre>
+    <script src="/LU-Decomposition.js"></script>
+
+  </body>
+</html>

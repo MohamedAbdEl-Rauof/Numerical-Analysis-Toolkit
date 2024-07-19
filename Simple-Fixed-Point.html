@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Fixed-Point </title>
+    <link rel="stylesheet" href="Simple-Fixed-Point.css">
+    <script src="/math.js"></script>
+    
+    <script >
+      document.addEventListener('DOMContentLoaded', () => {
+        const math = window.math;
+      
+        // define the variables
+        let Xnew = 0;
+        let xi = 0;
+        let error = '-';
+        let counter = 0;
+        let tolerance = 0;
+      
+        // get the DOM elements
+        const txt_fx = document.getElementById('txt_fx');
+        const txt_x0 = document.getElementById('txt_x0');
+        const txt_error = document.getElementById('txt_error');
+        const btn_sum = document.getElementById('btn_sum');
+        const btn_exit = document.getElementById('btn_exit');
+        const btn_clear = document.getElementById('btn_clear');
+        const table = document.getElementById('table');
+        const txt_root = document.getElementById('txt_root');
+        const txt_Ferror = document.getElementById('txt_Ferror');
+      
+        // define the event listeners
+        btn_sum.addEventListener('click', () => {
+          // get the input values
+          const fx = txt_fx.value;
+          const x0 = Number(txt_x0.value);
+          tolerance = Number(txt_error.value);
+      
+          // define the function
+          const f = math.compile(fx);
+      
+          // initialize the variables
+          Xnew = x0;
+          xi = x0;
+          error = '-';
+          counter = 0;
+      
+          // clear the table
+          table.innerHTML = '<tr><th>n</th><th>Xnew</th><th>F(X)</th><th>Error</th></tr>';
+      
+          // add the first row to the table
+          const row = table.insertRow(-1);
+          const cell1 = row.insertCell(0);
+          const cell2 = row.insertCell(1);
+          const cell3 = row.insertCell(2);
+          const cell4 = row.insertCell(3);
+          cell1.innerHTML = counter;
+          cell2.innerHTML = Xnew.toFixed(6);
+          cell3.innerHTML = f.evaluate({ x: Xnew }).toFixed(6);
+          cell4.innerHTML = error;
+      
+          // apply the fixed-point iteration method
+          while (true) {
+            // calculate the new approximation
+            const Xold = Xnew;
+            Xnew = f.evaluate({ x: xi });
+      
+            // calculate the error
+            error = Math.abs((Xnew - Xold) / Xnew) * 100;
+            error = error.toFixed(2);
+      
+            // update the variables
+            xi = Xnew;
+            counter++;
+      
+            // add a row to the table
+            const row = table.insertRow();
+            const cell1 = row.insertCell();
+            const cell2 = row.insertCell();
+            const cell3 = row.insertCell();
+            const cell4 = row.insertCell();
+            cell1.textContent = counter;
+            cell2.textContent = Xnew.toFixed(6);
+            cell3.textContent = f.evaluate({ x: Xnew }).toFixed(6);
+            cell4.textContent = error + '%';
+      
+            // check if the error is less than or equal to the tolerance
+            if (error <= tolerance) {
+              break;
+            }
+          }
+      
+          // display the root and final error
+          txt_root.innerHTML = Xnew.toFixed(6);
+          txt_Ferror.innerHTML = error + '%';
+        });
+      
+        btn_clear.addEventListener('click', () => {
+          // clear the input fields
+          txt_fx.value = '';
+          txt_x0.value = '';
+          txt_error.value = '';
+      
+          // clear the table
+          table.innerHTML = '<tr><th>n</th><th>Xnew</th><th>F(X)</th><th>Error</th></tr>';
+      
+          // clear the output fields
+          txt_root.innerHTML = '';
+          txt_Ferror.innerHTML = '';
+        });
+      });
+      
+</script>
+</head>
+<body>
+  <div class="container">
+    <h1>..Simple Fixed-Point</h1>
+    <div class="input">
+      <label for="txt_fx">f(x) = </label>
+      <input type="text" id="txt_fx" placeholder="sqrt((1.7x+2.5)/0.9)">
+    </div>
+    <div class="input">
+      <label for="txt_x0">X<sub>0</sub> = </label>
+      <input type="number" id="txt_x0" >
+    </div>
+    <div class="input">
+      <label for="txt_error">Error = </label>
+      <input type="number" id="txt_error" >
+    </div>
+    <div class="btns">
+      <button id="btn_sum">Calculate</button>
+      <button id="btn_clear">Clear</button>
+    </div>
+    <div class="output">
+      <table id="table">
+        <tr><th>n</th><th>Xnew</th><th>F(X)</th><th>Error</th></tr>
+      </table>
+      <p>Root = <span id="txt_root"></span></p>
+    </div>
+  </div>
+</body>
+</html>

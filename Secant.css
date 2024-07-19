@@ -1,0 +1,65 @@
+body {
+  background-color: #f2f2f2;
+}
+  
+h1 {
+  text-align: center;
+  margin-top: 50px;
+}
+  
+label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+}
+  
+input[type="text"], input[type="number"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+ border-radius: 5px;
+  margin-bottom: 10px;
+}
+  
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+  
+button + table {
+  margin-top: 20px;
+}
+  
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+  
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+  
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+  
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+  
+#root {
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4caf50;
+}
+  

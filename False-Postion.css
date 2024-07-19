@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  overflow: auto; /* add overflow property to contain the child elements */
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+form input[type="number"],
+form input[type="text"] {
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 150px;
+}
+
+form input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  table-layout: fixed; /* set fixed table layout */
+}
+
+table th,
+table td {
+  padding: 5px; /* decrease padding to minimize space */
+  text-align: center;
+  border: 1px solid #ddd;
+  word-wrap: break-word; /* wrap long text */
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+#output tr:last-child td {
+  border-bottom: none;
+}
+
+#output tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#output tr:hover {
+  background-color: #ddd;
+}
+
+.results {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.results h2 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.results p {
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.results strong {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* add a media query to adjust table layout on small screens */
+@media only screen and (max-width: 600px) {
+  table th,
+  table td {
+    font-size: 12px;
+    padding: 5px;
+  }
+}

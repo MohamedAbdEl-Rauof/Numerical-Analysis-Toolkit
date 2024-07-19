@@ -1,0 +1,115 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <title>Secant Method</title>
+	<link rel="stylesheet" href="/Secant.css">
+  </head>
+  <body>
+    <h1>..Secant Method</h1>
+    <label for="fx">f(x):</label>
+    <input type="text" id="fx" placeholder="0.95x^3-5.9x^2+10.9x-6"><br><br>
+    <label for="x0">x<sub>0</sub>:</label>
+    <input type="number" id="x0"><br><br>
+    <label for="x1">x<sub>1</sub>:</label>
+    <input type="number" id="x1"><br><br>
+    <label for="error">Error :</label>
+    <input type="number" id="error"><br><br>
+    <button onclick="solve()">Solve</button><br><br>
+	<label for="root">Root:</label>
+     <input type="text" id="root" name="root" readonly>
+    <table id="results">
+      <thead>
+        <tr>
+          <th>n</th>
+          <th>x<sub>n-1</sub></th>
+          <th>f(x<sub>n-1</sub>)</th>
+          <th>x<sub>n</sub></th>
+          <th>f(x<sub>n</sub>)</th>
+          <th>error</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+	
+	
+
+	<script>
+
+      function solve() {
+      // Get inputs
+      var fx = document.getElementById("fx").value;
+      var x0 = parseFloat(document.getElementById("x0").value);
+      var x1 = parseFloat(document.getElementById("x1").value);
+      var error = parseFloat(document.getElementById("error").value);
+    
+      // Clear table
+      var table = document.getElementById("results").getElementsByTagName('tbody')[0];
+      table.innerHTML = "";
+    
+      // Initialize variables
+      var n = 0;
+      var xold = x0;
+      var xi = x1;
+      var xnew = 0;
+      var fxi = math.evaluate(fx, {x: xi});
+      var fxold = math.evaluate(fx, {x: xold});
+      var errorVal = 0;
+    
+      // Add initial row to table
+      var row = table.insertRow();
+      var cell0 = row.insertCell(0);
+      var cell1 = row.insertCell(1);
+      var cell2 = row.insertCell(2);
+      var cell3 = row.insertCell(3);
+      var cell4 = row.insertCell(4);
+      var cell5 = row.insertCell(5);
+      cell0.innerHTML = n;
+      cell1.innerHTML = xold;
+      cell2.innerHTML = fxold;
+      cell3.innerHTML = xi;
+      cell4.innerHTML = fxi;
+      cell5.innerHTML = "--";
+    
+      // Iterate until error tolerance is met or maximum iterations is reached
+      while (n < 50) {
+        // Compute new approximation
+        xnew = xi - ((fxi * (xi - xold)) / (fxi - fxold));
+        fxold = fxi;
+        fxi = math.evaluate(fx, {x: xnew});
+        xold = xi;
+        xi = xnew;
+        errorVal = Math.abs((xi - xold) / xi) * 100;
+    
+        // Add row to table
+        var row = table.insertRow();
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        var cell2 = row.insertCell(2);
+        var cell3 = row.insertCell(3);
+        var cell4 = row.insertCell(4);
+        var cell5 = row.insertCell(5);
+        cell0.innerHTML = n + 1;
+        cell1.innerHTML = xold;
+        cell2.innerHTML = fxold;
+        cell3.innerHTML = xi;
+        cell4.innerHTML = fxi;
+        cell5.innerHTML = errorVal.toFixed(4) + "%";
+    
+        // Check for convergence
+        if (errorVal < error) {
+          break;
+        }
+    
+        n++;
+      }
+    
+      // Update root input
+      document.getElementById("root").value = xi;
+    }
+  
+
+  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.4.4/math.min.js"></script>
+  </body>
+</html>

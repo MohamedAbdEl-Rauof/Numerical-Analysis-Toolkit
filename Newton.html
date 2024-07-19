@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Newton Method </title>
+    <link rel="stylesheet" href="/Newton.css">
+  </head>
+  <body>
+    <h1>..Newton</h1>
+    <form>
+      <label for="function-input">Enter function f(x):</label><br>
+      <input type="text" id="function-input" placeholder="-0.9*x**2+1.7*x+2.5"><br>
+      <label for="derivative-input">Enter derivative f'(x):</label><br>
+      <input type="text" id="derivative-input"><br>
+      <label for="initial-guess-input">Enter initial guess X0:</label><br>
+      <input type="text" step="any" id="initial-guess-input"><br>
+      <label for="tolerance-input">Enter Error :</label><br>
+      <input type="text" step="any" id="tolerance-input"><br>
+      <input type="button" value="Calculate" onclick="calculateRoot()"><br>
+    </form>
+    <h2>Results:</h2>
+    <p>Root: <span id="root-output"></span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>n</th>
+          <th>x</th>
+          <th>f(x)</th>
+          <th>f'(x)</th>
+          <th>error (%)</th>
+        </tr>
+      </thead>
+      <tbody id="output-table-body"></tbody>
+    </table>
+
+    <script>
+      function calculateRoot() {
+        // Get user inputs
+        let functionInput = document.getElementById("function-input").value;
+        let derivativeInput = document.getElementById("derivative-input").value;
+        let initialGuessInput = document.getElementById("initial-guess-input").value;
+        let toleranceInput = document.getElementById("tolerance-input").value;
+      
+        // Define the function to be solved and its derivative
+        let f = function(x) {
+          return eval(functionInput);
+        };
+        let fPrime = function(x) {
+          return eval(derivativeInput);
+        };
+      
+        // Initialize variables
+        let x = parseFloat(initialGuessInput);
+        let error = 100;
+        let n = 0;
+      
+        // Update output table with first iteration
+        let outputTableBody = document.getElementById("output-table-body");
+        let row = document.createElement("tr");
+        row.innerHTML = "<td>" + n + "</td><td>" + x + "</td><td>" + f(x) + "</td><td>" + fPrime(x) + "</td><td></td>";
+        outputTableBody.appendChild(row);
+      
+        // Calculate the root
+        do {
+          let xPrev = x;
+          x = x - f(x) / fPrime(x);
+          error = Math.abs((x - xPrev) / x) * 100;
+          n++;
+      
+          // Update output table
+          let row = document.createElement("tr");
+          row.innerHTML = "<td>" + n + "</td><td>" + x + "</td><td>" + f(x) + "</td><td>" + fPrime(x) + "</td><td>" + error + "</td>";
+          outputTableBody.appendChild(row);
+        } while (error > toleranceInput && n < 1000);
+      
+        // Output results
+        document.getElementById("root-output").innerHTML = x;
+        document.getElementById("error-output").innerHTML = error;
+      }
+      
+    </script>
+  </body>
+</html>

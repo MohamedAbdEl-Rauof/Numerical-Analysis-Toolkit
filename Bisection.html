@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bisection</title>
+    <link rel="stylesheet" href="Bisection.css">
+  </head>
+  <body>
+    <h1>.. Bisection</h1>
+    <div class="container">
+      <form>
+        <label for="fx">Function:</label>
+        <input type="text" id="fx" placeholder="3*x**3+5*x**2+1"><br><br>
+        <label for="xl">Xl:</label>
+        <input type="text" id="xl"><br><br>
+        <label for="xu">Xu:</label>
+        <input type="text" id="xu"><br><br>
+        <label for="error">Error:</label>
+        <input type="text" id="error"><br><br>
+        <button type="button" onclick="calculate()">Calculate</button>
+        <button type="button" onclick="clearInputs()">Clear</button><br><br>
+        
+      </form>
+
+      <div class="results">
+        <h2>Results:</h2>
+        <p><strong>Root:</strong> <input type="text" id="root" disabled></p>
+      </div>
+
+      <table id="output">
+        <tr>
+          <th>Iteration</th>
+          <th>Xl</th>
+          <th>F(Xl)</th>
+          <th>Xu</th>
+          <th>F(Xu)</th>
+          <th>Xr</th>
+          <th>F(Xr)</th>
+          <th> Error</th>
+        </tr>
+      </table>
+    </div>
+
+    <script src="Bisection.js"></script>
+  </body>
+</html>
